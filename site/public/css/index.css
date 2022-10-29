@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;1,100;1,400;1,500;1,900&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:'Roboto', sans-serif;
+    scroll-behavior: smooth;
+   }
+   
+   .container{
+       margin: 0 auto;
+       width: 90%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       
+     }
+
+#logo{
+    height: 10vw;
+    width: 20vw;
+}
+
+     /* Header */
+  .header{
+    background-color: #ffff;
+    /* -webkit-box-shadow: 0px 0px 8px 2px #BBBAB8; */
+    border-bottom: #D98494 2px solid;
+  }
+  
+ .navegacao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .navegacao ul{
+    display: flex;
+    align-items: center;
+  }
+  
+  .navegacao ul li{
+    list-style: none;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+  
+  .navegacao ul li a{
+    text-decoration: none;
+    margin-right: 0px;
+    font-weight: bold;
+    color: #D98494;
+    transition: 0.5s;
+  }
+  
+  .navegacao ul li a:hover{
+    color: #000;
+  }
+  
+  .navegacao a{
+    display: block;
+    margin-right: 30px;
+  }
+  
+  .botao-login{
+    padding: 10px 20px;
+    color:  #D98494;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  .botao-login:hover{
+    background:  #D98494;
+    border-radius: 5px;
+    color: #ffff;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .botao-cadastro{
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffff;
+    font-weight: bold;
+    background:  #D98494;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  
+  .botao-cadastro:hover{
+    background: #84D9D9;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  /* imagem  */
+
+  .bunner1{
+  width: 100%;
+  background-size: cover;
+  margin-bottom:0px;
+  
+  }
