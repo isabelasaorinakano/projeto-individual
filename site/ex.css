@@ -1,0 +1,46 @@
+.caixa{
+    width: 60%;
+    height: 150px;
+    border: violet 4px solid;
+    border-radius: 10px;
+    background-color: #ffff;
+    margin-bottom: 2vw; 
+    
+    
+}
+
+.rosa{
+    margin-left: 5vw;
+}
+
+
+.preto{
+    margin-left: 10vw;
+}
+
+/* .itens-card{
+    display: inline-block;
+    
+} */
+
+.itens-card{
+    display: inline-block;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 30px;
+
+}
+
+.itens-card img{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    margin: 10px 10px;
+
+    
+}
+
+.itens-card p{
+    margin-inline-start: 80px;
+}
+
