@@ -66,6 +66,9 @@
   
 }
 
+
+
+
 .card-nossa-historia{
   background-color: #ffff;
   border-radius: 20px;
@@ -97,7 +100,7 @@
  
 }
 
-.container-bunner-third{
+/* .container-bunner-third{
   background-image: url(../assets/white-cat-lies-on-woman-s-knees.jpg);
   width: 100%;
   height: 100vh ;
@@ -105,8 +108,16 @@
   background-size: cover;
   margin-top: 15vh;
   margin-bottom: 10vh;
-}
+} */
 
+.container-bunner-third video{
+width: 100%;
+height: 100vh;
+background-color: #D98494;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+margin-top: 20vh;
+margin-bottom: 10vh;
+}
 
 /* cards  */
 
@@ -170,6 +181,78 @@ border-bottom: #84D9D9 3px solid;
   margin-bottom: 4vh;
   
 }
+
+/* cards */
+
+.caixa{
+  width: 60%;
+  height: 150px;
+  border: #D98494 4px solid;
+  border-radius: 10px;
+  background-color: #ffff;
+  margin-bottom: 4vw; 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  
+}
+
+
+.firts{
+  margin-left: 10vw;
+}
+.second{
+  margin-left: 20vw;
+}
+
+
+.third{
+  margin-left: 30vw;
+}
+
+/* .itens-card{
+  display: inline-block;
+  
+} */
+
+.itens-card{
+  display: inline-block;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 30px;
+
+}
+
+.itens-card img{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  margin: 10px 10px;
+
+  
+}
+
+.itens-card p{
+  margin-inline-start: 80px;
+}
+
+.texto-cards{
+  margin-left: 10vw;
+  width: 55vw;
+  margin-bottom: 10vh;
+  
+}
+
+.texto-cards h1{
+  
+  color: #D98494;
+  margin-bottom: 5vh;
+  
+}
+
+.btn-cards{
+  margin-left: 130vh;
+}
+
 
 
 
