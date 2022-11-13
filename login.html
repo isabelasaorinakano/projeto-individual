@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="./css/style-geral.css">
+    <link rel="icon" type="img/png" href="./assets/favicon.png">
+    <title>Cadastre-se! | Pick.Me Cat</title>
+
+    <script src="./js/funcoes.js"></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+    <div class="container">
+      <img src="./assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+
+      <nav class="navegacao">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Nossa História</a></li>
+    
+        </ul>
+        <a class="botao-login" href="login.html">Login</a>
+        <a class="botao-cadastro" href="cadastro.html">Cadastre-se</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- formulário de cadastro -->
+
+<main>
+  <div class="alerta_erro">
+    <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+    </div>
+</div>
+  <form>
+    <div class="container-forms">
+      <div class="formulario">
+          <!-- <img src="./assets/user-login.png"> -->
+          <h1>Login</h1>
+
+          <div class="campo">
+              <label for="ipt-email">Email</label>
+              <input type="email" id="ipt-email" placeholder="seuemail@.com">
+          </div>
+
+          <div class="campo">
+              <label for="ipt-senha">Senha</label>
+              <input type="password" id="ipt-senha" placeholder="******">
+          </div>
+
+          <a>Ainda não possui uma conta?</a>
+          <b><a href="./cadastro.html">Cadastre-se!</a></b>
+          <button>Entrar</button>
+      </div>
+
+      <div id="div_aguardar" class="loading-div">
+        <img src="./assets/circle-loading.gif" id="loading-gif">
+    </div>
+
+    <div id="div_erros_login">
+
+    </div>
+
+  </div>
+
+  </form>
+    
+</main>
+
+<!-- Rodapé  -->
+    
+<footer>
+    <div class="container">
+      <img src="assets/logo.png" alt="logo">
+
+      <div class="navegacao-footer">
+        <ul>
+          <li><a href="index.html">Home<a></li>
+          <li><a href="#">Nossa História</a></li>
+        </ul>
+
+        <p>Todos os direitos reservados | ©2022</p>
+      </div>
+
+      <div class="redes-footer">
+        <img src="./assets/linkedin.png" alt="icone linkedin">
+        <img src="./assets/instagram.png" alt="icone instagram">
+      </div>
+    </div>
+  </footer>
+  
+</div>
+</div>
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
+
+    

@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;1,100;1,400;1,500;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:'Roboto', sans-serif;
+    scroll-behavior: smooth;
+   }
+   
+   .container{
+       margin: 0 auto;
+       width: 90%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       
+     }
+
+    .botao-padrao{
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #ffff;
+      font-weight: bold;
+      background:  #D98494;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      transition: 0.5s;
+    }
+    
+    .botao-padrao:hover{
+      background: #84D9D9;
+      box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+    }
+  
+    
+
+
+#logo{
+    height: 10vw;
+    width: 20vw;
+}
+
+     /* Header */
+  .header{
+    background-color: #ffff;
+    /* -webkit-box-shadow: 0px 0px 8px 2px #BBBAB8; */
+    border-bottom: #D98494 2px solid;
+  }
+  
+ .navegacao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .navegacao ul{
+    display: flex;
+    align-items: center;
+  }
+  
+  .navegacao ul li{
+    list-style: none;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+  
+  .navegacao ul li a{
+    text-decoration: none;
+    margin-right: 0px;
+    font-weight: bold;
+    color: #D98494;
+    transition: 0.5s;
+  }
+  
+  .navegacao ul li a:hover{
+    color: #000;
+  }
+  
+  .navegacao a{
+    display: block;
+    margin-right: 30px;
+  }
+  
+  .botao-login{
+    padding: 10px 20px;
+    color:  #D98494;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  .botao-login:hover{
+    background:  #D98494;
+    border-radius: 5px;
+    color: #ffff;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .botao-cadastro{
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffff;
+    font-weight: bold;
+    background:  #D98494;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+  
+  .botao-cadastro:hover{
+    background: #84D9D9;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  /* Footer */
+footer img{
+
+  height: 10vw;
+  width: 20vw;
+}
+
+footer{
+  margin-top: 200px;
+  border-bottom: #D98494 10px solid;
+  -webkit-box-shadow: 0px 0px 8px 2px #BBBAB8; 
+  background-color: #ffff;
+  padding: 20px;
+}
+
+.navegacao-footer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+ 
+}
+
+.navegacao-footer ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  align-items: center;
+  margin: 65px 0;
+}
+
+.navegacao-footer ul li{
+  margin-right: 30px;
+}
+
+.navegacao-footer ul li a{
+  text-decoration: none;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.navegacao-footer ul li a:hover{
+  color: #D98494;
+  font-weight: bold;
+}
+
+.navegacao-footer p{
+  color:  #BBBAB8;;
+}
+
+.redes-footer img:nth-child(1){
+  margin-right: 20px; 
+} 
+
+.redes-footer img{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+} 
+
+/* cards */
+
+.caixa{
+  width: 60%;
+  height: 150px;
+  border: #D98494 4px solid;
+  border-radius: 10px;
+  background-color: #ffff;
+  margin-bottom: 4vw; 
+
+  
+}
+
+.firts{
+  margin-left: 10vw;
+}
+.second{
+  margin-left: 20vw;
+}
+
+
+.third{
+  margin-left: 30vw;
+}
+
+/* .itens-card{
+  display: inline-block;
+  
+} */
+
+.itens-card{
+  display: inline-block;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 30px;
+
+}
+
+.itens-card img{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  margin: 10px 10px;
+
+  
+}
+
+.itens-card p{
+  margin-inline-start: 80px;
+}
+
+.texto-cards{
+  margin-left: 10vw;
+  width: 55vw;
+  margin-bottom: 10vh;
+  
+}
+
+.texto-cards h1{
+  
+  color: #D98494;
+  margin-bottom: 5vh;
+  
+}
+
+.btn-cards{
+  margin-left: 130vh;
+}
+

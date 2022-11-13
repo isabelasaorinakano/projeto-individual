@@ -1,0 +1,118 @@
+body{
+    background: linear-gradient(90deg, rgba(217,132,148,1) 0%, rgba(217,132,148,1) 32%, rgba(132,217,217,1) 97%, rgba(0,212,255,1) 100%);
+}
+
+.container-conteudo{
+    padding: 50vh 0vw;
+    background-color: #ffff;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 10vh 5vh;
+  
+
+}
+
+.section-sobre-nos{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 5vh;
+    background-color: #ffff;
+    margin-top: 10vh;
+    
+}
+.section-sobre-nos img{
+    position: absolute;
+    margin-left: 5vh;
+    width: 330px;
+    height: 330px; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border: 10px white solid;
+    transition: transform .5s linear;
+}
+
+.section-sobre-nos img:hover{
+    transform: scale(1.3);
+}
+.section-sobre-nos h1{
+color: #D98494;
+margin:5vh;
+margin-left: 30vw;
+border-bottom: #D98494 3px solid;
+}
+
+.section-sobre-nos p{
+width: 50vw;
+margin:5vh;
+margin-left: 30vw;
+text-align: justify;
+
+}
+
+.chico{
+    margin-bottom: 20vh;
+}
+
+.sobre-mim{
+    margin-bottom: 45vh;
+
+}
+
+.sobre-mim a{
+    text-decoration: none;
+    color: #D98494;
+}
+
+.container-galeria{
+    display: flex;
+   
+}
+
+.container-galeria img{
+    width: 240px;
+    height: 240px;
+}
+
+/* galeria */
+
+.gallery-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2vw;
+    padding: 0 2vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.header-galery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh;
+   
+}
+
+.header-galery h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    color: #FFF;
+    text-shadow: 4px 4px black;
+}
+.gallery-items{
+    width: 340px;
+    height: 340px;
+    border: 10px solid #FFF;
+    box-shadow: 5px 5px 5px #0006;
+    flex-grow: 1;
+    transition: transform .5s linear;
+}
+.gallery-items img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-items:hover{
+    transform: scale(1.3);
+}
+
+
