@@ -58,11 +58,11 @@
     transition: 0.5s;
     margin-bottom: 5vh;
   }
-
+/* 
   .formulario img{
       width: 15vw;
       height: 20vh;
-  }
+  } */
 
   .formulario button:hover{
     background: #84D9D9;
@@ -98,6 +98,57 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 2vh;
+  }
+
+  .alerta_erro{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .card_erro {
+    display: none;
+    background-color: #fff;
+    color: black;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #e6005a 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
+/* spans de validações */
+  #span_nome_inválido{
+    font-size: 10px;
+    color: red;
+  }
+
+  #span_email_inválido{
+    font-size: 10px;
+    color: red;
+    margin-bottom: 15px;
+  }
+
+  
+  #span_senha_inválida{
+    font-size: 10px;
+    color: red;
+    margin-bottom: 15px;
   }
 
   /* Footer */
@@ -159,3 +210,42 @@ footer img{
     height: 50px;
     cursor: pointer;
   } 
+
+  /* 
+  LOADIND DIV */
+
+  .loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
+
+
+/* ALERTA ERRO */
+  
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #e6005a 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}

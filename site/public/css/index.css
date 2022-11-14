@@ -4,7 +4,7 @@
 
   
 .container-bunner {
-  background-image: url(../assets/bunner1.jpg);
+  background-image: url(../assets/imgs/bunner1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px;
@@ -54,7 +54,7 @@
 /* bunner2 */
 
 .container-bunner-second-image{
-  background-image: url(../assets/bunner2.jpg);
+  background-image: url(../assets/imgs/bunner2.jpg);
   margin-bottom: 20vh;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
     <link rel="stylesheet" type="text/css" href="./css/style-geral.css">
-    <link rel="icon" type="img/png" href="./assets/favicon.png">
+    <link rel="icon" type="img/png" href="./assets/icon/favicon.png">
+
+    <script src="./js/funcoes.js"></script>
+
     <title>Cadastre-se! | Pick.Me Cat</title>
+
+
 </head>
+
 <body>
-    <!-- header -->
+
+     <!-- header -->
 <header class="header">
     <div class="container">
-      <img src="./assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+      <img src="./assets/imgs/logo.png" alt="Pick.Me Cat Logo" id="logo">
 
       <nav class="navegacao">
         <ul>
@@ -26,43 +34,61 @@
       </nav>
     </div>
   </header>
+    
 
 <!-- formulário de cadastro -->
 
 <main>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+
     <div class="container-forms">
         <div class="formulario">
-            <img src="./assets/undraw_welcome_cats_thqn.png">
+           
             <h1>Cadastre-se aqui!</h1>
             <p>Torne-se um voluntario</p>
 
             <div class="campo">
-                <label for="ipt-nome">Nome</label>
-                <input type="text" id="ipt-nome" placeholder="seu nome">
+                <label for="ipt_nome">Nome</label>
+                <input type="text" id="ipt_nome" placeholder="seu nome">
             </div>
 
             <div class="campo">
-                <label for="ipt-email">Email</label>
-                <input type="email" id="ipt-email" placeholder="seuemail@.com">
+                <label for="ipt_email">Email</label>
+                <input type="email" id="ipt_email" placeholder="seuemail@.com">
             </div>
 
             <div class="campo">
-                <label for="ipt-senha">Senha</label>
-                <input type="password" id="ipt-senha" placeholder="******">
+                <label for="ipt_senha">Senha</label>
+                <input type="password" id="ipt_senha" placeholder="******">
             </div>
 
             <a>Já possui uma conta?</a>
             <b><a href="./login.html">Acesse</a></b>
-            <button>Cadastrar</button>
+            <button onclick="cadastrar()">Cadastrar</button>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif">
+            </div>
+
+            <div id="div_erros_login">
+
+            </div>
+
+
         </div>
     </div>
 </main>
 
-<!-- Rodapé  -->
+   <!-- Rodapé  -->
     
 <footer>
     <div class="container">
-      <img src="assets/logo.png" alt="logo">
+      <img src="assets/imgs/logo.png" alt="logo">
 
       <div class="navegacao-footer">
         <ul>
@@ -74,18 +100,78 @@
       </div>
 
       <div class="redes-footer">
-        <img src="./assets/linkedin.png" alt="icone linkedin">
-        <img src="./assets/instagram.png" alt="icone instagram">
+        <img src="./assets/imgs/linkedin.png" alt="icone linkedin">
+        <img src="./assets/imgs/instagram.png" alt="icone instagram">
       </div>
     </div>
   </footer>
-  
-</div>
-</div>
+</body>
 
-    
-</body>
 </html>
-    
-</body>
-</html>
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+       
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" ) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

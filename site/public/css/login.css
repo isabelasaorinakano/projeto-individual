@@ -11,8 +11,8 @@
 
   .formulario{
     background-color: #ffffff;
-    padding: 30px 90px 0px 80px;
-    height: 90vh;
+    padding: 30px 90px 0px 80px; 
+    height: 80vh;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -55,13 +55,13 @@
     cursor: pointer;
     font-size: 20px;
     transition: 0.5s;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
   }
 
-  .formulario img{
+  /* .formulario img{
       width: 18vw;
-      height: 30vh;
-  }
+      height: 35vh;
+  } */
 
   .formulario button:hover{
     background: #84D9D9;
@@ -71,6 +71,7 @@
   .formulario h1{
       color: #D98494;
       font-weight: bold;
+      margin-bottom: 15px;
   }
 
 
@@ -154,3 +155,41 @@ footer img{
     height: 50px;
     cursor: pointer;
   } 
+/* 
+  LOADIND DIV */
+
+  .loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
+
+
+/* ALERTA ERRO */
+  
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #e6005a 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
