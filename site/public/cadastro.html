@@ -56,16 +56,21 @@
                 <label for="ipt_nome">Nome</label>
                 <input type="text" id="ipt_nome" placeholder="seu nome">
             </div>
+            <span id="span_nome_inválido"></span>
 
             <div class="campo">
                 <label for="ipt_email">Email</label>
                 <input type="email" id="ipt_email" placeholder="seuemail@.com">
             </div>
 
+            <span id="span_email_inválido"></span>
+
             <div class="campo">
                 <label for="ipt_senha">Senha</label>
                 <input type="password" id="ipt_senha" placeholder="******">
             </div>
+
+            <span id="span_senha_inválida"></span>
 
             <a>Já possui uma conta?</a>
             <b><a href="./login.html">Acesse</a></b>
@@ -119,12 +124,27 @@
         var senhaVar = ipt_senha.value;
        
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" ) {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Certifique-se que todos os campos estão preenchidos";
+
+            var cor_erro =  "#FF0000";
+
+            //validações
+
+            ipt_nome.style.borderColor = cor_erro;
+            span_nome_inválido.innerHTML = "Nome inválido!";
+
+
+            ipt_email.style.borderColor = cor_erro;
+            span_email_inválido.innerHTML = "email inválido";
+
+            ipt_senha.style.borderColor = cor_erro;
+            span_senha_inválida.innerHTML = "senha inválida";
 
             finalizarAguardar();
             return false;
+            
         }
         else {
             setInterval(sumirMensagem, 5000)

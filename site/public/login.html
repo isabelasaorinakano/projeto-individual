@@ -121,7 +121,14 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Certifique-se que todos os campos estão preenchidos";
+
+            var cor_erro =  "#FF0000";
+            
+            ipt_email.style.borderColor = cor_erro;
+            ipt_senha.style.borderColor = cor_erro;
+
+
             finalizarAguardar();
             return false;
         }
@@ -156,7 +163,7 @@
                     sessionStorage.ID_USUARIO = json.id;
                      
                     setTimeout(function () {
-                        window.location = "./teste.html";
+                        window.location = "../crud/index.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
