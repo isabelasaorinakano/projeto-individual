@@ -4,7 +4,7 @@
 
   
 .container-bunner {
-  background-image: url(../assets/imgs/bunner1.jpg);
+  background-image: url(../assets/bunner1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px;
@@ -54,7 +54,7 @@
 /* bunner2 */
 
 .container-bunner-second-image{
-  background-image: url(../assets/imgs/bunner2.jpg);
+  background-image: url(../assets/bunner2.jpg);
   margin-bottom: 20vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -98,6 +98,12 @@
   margin-bottom: 10vh;
   font-weight: 700;
  
+}
+
+.patinha-bunner2{
+  position: absolute;
+  height: 15vh;
+  margin: 10rem 0px 0px 16.2rem;
 }
 
 /* .container-bunner-third{
@@ -262,8 +268,8 @@ border-bottom: #84D9D9 3px solid;
   justify-content: center;
   align-items: center;
   margin: 15vh;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 20px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px; */
 
 }
 
@@ -292,6 +298,14 @@ margin-bottom: 5vh;
   margin-bottom: 5vh;
   
 }
+
+.chart-gatinho{
+  position: absolute;
+  margin: 0px 0px 0px 35rem;
+  height: 70vh;
+}
+
+
 
 /* #quiz */
 
@@ -358,4 +372,100 @@ ul {
 #start {
     display:none;
     width: 90px;
+}
+
+/* carousel */
+
+
+.container-carousel {
+  position: relative;
+  padding: 15px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.gallery-wrapper {
+  overflow-x: auto;
+}
+
+.arrow-left,
+.arrow-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  font-size: 20px;
+  line-height: 250px;
+  width: 40px;
+  color: #fff;
+  transition: all 600ms ease-in-out;
+  background: linear-gradient(to left, transparent 0%, black 200%);
+  opacity: 0.1;
+  cursor: pointer;
+  border: none;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+  opacity: 1;
+}
+
+.arrow-right {
+  right: 0;
+  left: auto;
+  text-align: right;
+  background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+
+.item {
+  width: 100%;
+  height: 100vh;
+  flex-shrink: 0;
+  transition: all 600ms ease-in-out;
+  opacity: 0.5;
+}
+
+.current-item {
+  opacity: 1;
+}
+
+/* This is from w3schools */
+/* 
+https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.gallery-wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.cyan {
+  background: cyan;
+}
+
+.deeppink {
+  background: deeppink;
+}
+
+.turquoise {
+  background: turquoise;
+}
+
+.darkblue {
+  background: darkblue;
+}
+
+.purple {
+  background: purple;
 }

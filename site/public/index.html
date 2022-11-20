@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="stylesheet" type="text/css" href="./css/style-geral.css">
-    <link rel="icon" type="img/png" href="./assets/icon/favicon.png">
+    <link rel="icon" type="img/png" href="./assets/favicon.png">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+ 
 
 
     <!-- JS externo -->
@@ -23,7 +24,7 @@
     <!-- header -->
     <header class="header">
         <div class="container">
-            <img src="./assets/imgs/logo.png" alt="Pick.Me Cat Logo" id="logo">
+            <img src="./assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
 
             <nav class="navegacao">
                 <ul>
@@ -54,6 +55,7 @@
     <!-- bunner 2 -->
     <div class="container-bunner-second-image">
         <div class="card-nossa-historia">
+            <img src="./assets/pegada.png" class="patinha-bunner2">
             <div class="texto-bunner-second">
                 <h1>O Chico!</h1>
                 <p>
@@ -84,7 +86,7 @@
     </div>
     <div class="caixa firts">
         <div class="itens-card">
-            <img src="./assets/imgs/gato.png">
+            <img src="./assets/gato.png">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, officia dolore minima rerum optio
                 ullam
@@ -95,7 +97,7 @@
 
     <div class="caixa second">
         <div class="itens-card">
-            <img src="./assets/imgs/gato (1).png">
+            <img src="./assets/gato (1).png">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, officia dolore minima rerum optio
                 ullam
@@ -106,7 +108,7 @@
 
     <div class="caixa third">
         <div class="itens-card">
-            <img src="./assets/imgs/gato (2).png">
+            <img src="./assets/gato (2).png">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, officia dolore minima rerum optio
                 ullam
@@ -117,12 +119,40 @@
 
     <a class="botao-padrao btn-cards " href="#">Saiba mais!</a>
 
-    <!-- terceira imagem do site  -->
+    <!-- terceira imagem do site 
     <div class="container-bunner-third">
         <video autoplay muted loop>
-            <source src="./assets/imgs/coverr-a-beautiful-cat-licks-itself-381-1080p.mp4">
+            <source src="./assets/coverr-a-beautiful-cat-licks-itself-381-1080p.mp4">
         </video>
+    </div> -->
+
+    <!-- carousel -->
+
+    
+    <div class="container-carousel">
+        <button class="arrow-left control" aria-label="Previous image">◀</button>
+        <button class="arrow-right control" aria-label="Next Image">▶</button>
+        <div class="gallery-wrapper">
+            <div class="gallery">
+                <!--       <div class="item current-item cyan"></div>
+      <div class="item deeppink"></div>
+      <div class="item turquoise"></div>
+      <div class="item darkblue"></div>
+      <div class="item purple"></div> -->
+                <img src="./assets/white-cat-lies-on-woman-s-knees.jpg" alt="Beach Image"
+                    class="item current-item">
+                <img src="./assets/bunner1.jpg" alt="Animal Image"
+                    class="item current-item">
+                <img src="./assets/bunner2.jpg" alt="Street Image"
+                    class="item current-item">
+                <img src="./assets/undraw_welcome_cats_thqn.png" alt="Zoo Image" class="item current-item">
+                <img src="./assets/undraw_welcome_cats_thqn.png" alt="Model Image"
+                    class="item current-item">
+            </div>
+        </div>
     </div>
+    
+
 
     <!-- cards blog -->
 
@@ -134,7 +164,7 @@
     <div class="container-cards-blog">
 
         <div class="cards-blog">
-            <a href="#"> <img src="./assets/imgs/gato-blog-01.jpg"></a>
+            <a href="#"> <img src="./assets/gato-blog-01.jpg"></a>
 
             <h1>Titulo qualquer</h1>
             <p>
@@ -147,7 +177,7 @@
         </div>
 
         <div class="cards-blog">
-            <a href="#"><img src="./assets/imgs/gato-blog-2.jpg"></a>
+            <a href="#"><img src="./assets/gato-blog-2.jpg"></a>
 
             <h1>Titulo qualquer</h1>
             <p>
@@ -159,7 +189,7 @@
         </div>
 
         <div class="cards-blog">
-            <a href="#"> <img src="./assets/imgs/gato-blog-3.jpeg"></a>
+            <a href="#"> <img src="./assets/gato-blog-3.jpeg"></a>
 
             <h1>Titulo qualquer</h1>
             <p>
@@ -185,26 +215,16 @@
             </p>
 
             <div>
+                <img src="./assets/gatinhoPNG.png" class="chart-gatinho">
                 <canvas id="myChart"></canvas>
+
             </div>
 
         </div>
 
     </div>
 
-    <!-- quiz -->
-    <div id='title'>
-        <h1>Learning Js Properly: Project #1 - Dynamic Quiz</h1>
     </div>
-       <br/>
-      <div id='quiz'></div>
-    <div class='button' id='next'><a href='#'>Next</a></div>
-    <div class='button' id='prev'><a href='#'>Prev</a></div>
-    <div class='button' id='start'> <a href='#'>Start Over</a></div>
-    <!-- <button class='' id='next'>Next</a></button>
-    <button class='' id='prev'>Prev</a></button>
-    <button class='' id='start'> Start Over</a></button> -->
-</div>
 
 
 
@@ -280,4 +300,5 @@
         document.getElementById('myChart'),
         config
     );
+
 </script>
