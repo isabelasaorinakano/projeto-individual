@@ -19,22 +19,22 @@
 <body>
 
 
-    <!-- header -->
-    <header class="header">
-        <div class="container">
-            <!-- <img src="./assets/imgs/logo.png" alt="Pick.Me Cat Logo" id="logo"> -->
+ <!-- header -->
+ <header class="header">
+    <div class="container">
+        <img src="./assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
 
-            <nav class="navegacao">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Nossa História</a></li>
+        <nav class="navegacao">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./nossa-historia.html">Nossa História</a></li>
 
-                </ul>
-                <a class="botao-login" href="login.html">Login</a>
-                <a class="botao-cadastro" href="cadastro.html">Cadastre-se</a>
-            </nav>
-        </div>
-    </header>
+            </ul>
+            <a class="botao-login" href="login.html">Login</a>
+            <a class="botao-cadastro" href="cadastro.html">Cadastre-se</a>
+        </nav>
+    </div>
+</header>
 
     <!-- formulário de cadastro -->
 
@@ -66,19 +66,19 @@
 
                     <button onclick=" entrar()">Entrar</button>
 
+
+                    <div id="div_erros_login">
+
+                    </div>
+
+
+
                 </div>
-
-               <div id="div_aguardar" class="loading-div">
-                     <img src="https://tenor.com/view/loading-slow-internet-waiting-gif-8696160"> 
-    
-                <div id="div_erros_login">
-
-                </div>
-
             </div>
-        </div>
+            <span id="div_aguardar" class="loading-div">
+                <img src="./assets/Rolling-0.6s-231px.gif">
+            </span>
 
-      
     </main>
 
 
@@ -121,10 +121,10 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Certifique-se que todos os campos estão preenchidos";
+            mensagem_erro.innerHTML = "Certifique-se que todos os campos estão preenchidos corretamente.";
 
-            var cor_erro =  "#FF0000";
-            
+            var cor_erro = "#FF0000";
+
             ipt_email.style.borderColor = cor_erro;
             ipt_senha.style.borderColor = cor_erro;
 
@@ -161,7 +161,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                     
+
                     setTimeout(function () {
                         window.location = "../crud/index.html";
                     }, 1000); // apenas para exibir o loading
