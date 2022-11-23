@@ -13,9 +13,10 @@ CREATE TABLE usuario (
 );
 
 
-CREATE TABLE aviso (
+CREATE TABLE gato(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
+	nome VARCHAR(50),
+	raça VARCHAR(50),
 	descricao VARCHAR(150),
 	fk_usuario INT,
 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
