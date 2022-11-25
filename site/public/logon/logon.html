@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./logon.css">
+    <link rel="stylesheet" href="../css/style-geral.css">
+    <title>Bem vindo! | Cadastre gatinhos</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="container">
+            <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+
+            <nav class="navegacao">
+                <a class="botao-cadastro" href="../index.html">Home</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container-main">
+            <div class="container-forms">
+                <div class="formulario">
+                    <h1>Cadastre novos gatinhos!</h1>
+                    <p>Olá, <b>Usuário</b></p>
+
+                    <div class="campo">
+                        <label for="nome_gatinho">Nome:</label>
+                        <input type="text" id="nome_gatinho" placeholder="Nome do seu gatinho">
+                    </div>
+                    <div class="campo">
+                        <label for="peso_gatinho">Peso:</label>
+                        <input type="text" id="peso_gatinho" placeholder="3.00 kg">
+                    </div>
+                    <div class="campo">
+                        <label for="data_cadastro_gatinho">Data:</label>
+                        <input type="date" id="data_cadastro_gatinho">
+                    </div>
+                    <div class="campo">
+                        <label for="textarea_descricao">Descrição:</label>
+                        <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                    </div>
+
+                    <button onclick=" entrar()">Enviar </button>
+
+                </div>
+            </div>
+
+           
+           
+        </div>
+
+
+    </main>
+
+    <div class="resultado"></div>
+</body>
+
+</html>
