@@ -7,57 +7,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./logon.css">
     <link rel="stylesheet" href="../css/style-geral.css">
+    <script src="../js/funcoes.js"></script>
     <title>Bem vindo! | Cadastre gatinhos</title>
 </head>
 
-<body>
+<body onload="validarSessao(), atualizarFeed()">
     <!-- header -->
     <header class="header">
         <div class="container">
             <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
 
             <nav class="navegacao">
-                <a class="botao-cadastro" href="../index.html">Home</a>
+                <a class="btn-logout" onclick="limparSessao()">Home</a>
             </nav>
         </div>
     </header>
     <main>
-        <div class="container-main">
-            <div class="container-forms">
-                <div class="formulario">
-                    <h1>Cadastre novos gatinhos!</h1>
-                    <p>Olá, <b>Usuário</b></p>
 
-                    <div class="campo">
-                        <label for="nome_gatinho">Nome:</label>
-                        <input type="text" id="nome_gatinho" placeholder="Nome do seu gatinho">
-                    </div>
-                    <div class="campo">
-                        <label for="peso_gatinho">Peso:</label>
-                        <input type="text" id="peso_gatinho" placeholder="3.00 kg">
-                    </div>
-                    <div class="campo">
-                        <label for="data_cadastro_gatinho">Data:</label>
-                        <input type="date" id="data_cadastro_gatinho">
-                    </div>
-                    <div class="campo">
-                        <label for="textarea_descricao">Descrição:</label>
-                        <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                    </div>
+        <div class="div-form">
+            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                <h1>Cadastre novos gatinhos!</h1>
+                <p>Olá, <b id="b_usuario">Usuário</b></p>
 
-                    <button onclick=" entrar()">Enviar </button>
-
+                <div class="campo">
+                    <label for="nome_gatinho">Nome:</label>
+                    <input name="nome_gatinho" id="nome_gatinho"  maxlength="100" type="text" placeholder="Nome do seu gatinho">
                 </div>
-            </div>
 
-           
-           
+                <div class="campo">
+                    <label for="raca_gatinho">Raça:</label>
+                    <input name="raca_gatinho" id="raca_gatinho"  maxlength="100" type="text" placeholder="Ex: Frajola">
+                </div>
+
+                <div class="campo">
+                    <label for="peso_gatinho">Peso:</label>
+                    <input name="peso_gatinho" id="peso_gatinho" maxlength="100" type="text" placeholder="3.00 kg">
+                </div>
+                <div class="campo">
+                    <label for="data_cadastro_gatinho">Data:</label>
+                    <input name="data_cadastro_gatinho" id="data_cadastro_gatinho" maxlength="100" type="date">
+                </div>
+                <div class="campo">
+                    <label for="textarea_descricao">Descrição:</label>
+                    <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                </div>
+
+
+                <button>Enviar</button>
+            </form>
+        </div>
+        <h1>Mural de Avisos</h1>
+        <div class="div-results">
+            <div id="feed_container" class="feed-container">
+            </div>
         </div>
 
 
     </main>
 
-    <div class="resultado"></div>
 </body>
 
 </html>
+
+<script>
+    
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            nome: form_postagem.nome_gatinho.value,
+            raca: form_postagem.raca_gatinho.value,
+            peso: form_postagem.peso_gatinho.value,
+            data: form_postagem.data_cadastro_gatinho.value,
+            descricao: form_postagem.descricao.value
+        }
+//cadastroGatinho é uma rota
+        fetch(`/cadastroGatinho/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/logon/logon.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    // function editar(idCadastro) {
+    //     sessionStorage.ID_CADASTRO_EDITANDO = idCadastro;
+    //     console.log("cliquei em editar - " + idCadastro);
+    //     window.alert("Você será redirecionado à página de edição de gatinho id número: " + idCadastro);
+    //     window.location = "/dashboard/edicao-aviso.html"
+
+    // }
+
+     function adotar(idCadastro) {
+         console.log("Criar função de adotar gatinho escolhido - ID" + idCadastro);
+         fetch(`/cadastroGatinho/adotar/${idCadastro}`, {
+             method: "DELETE",
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }).then(function (resposta) {
+
+             if (resposta.ok) {
+                 window.alert("Gatinho cadastrado pelo usuário" + sessionStorage.getItem("NOME_USUARIO") + " foi adotado!");
+                 window.location = "/logon/logon.html"
+             } else if (resposta.status == 404) {
+                 window.alert("Deu 404!");
+             } else {
+                 throw ("Houve um erro ao tentar realizar o cadastro de gatinho! Código da resposta: " + resposta.status);
+            }
+         }).catch(function (resposta) {
+             console.log(`#ERRO: ${resposta}`);
+         });
+     }
+
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/cadastroGatinho/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var spanRaca = document.createElement("span");
+                        var spanPeso = document.createElement("span");
+                        var spanData = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        //nome, raça,peso, data, descricao
+                       
+
+                        spanID.innerHTML = "ID: <b>" + publicacao.idCadastro + "</b>";
+                        spanNome.innerHTML = "Voluntario: <b>" + publicacao.nome + "</b>";
+                        spanRaca.innerHTML = "Raça: <br>" + publicacao.raca + "</br>";
+                        spanPeso.innerHTML = "Peso: <br>"+ publicacao.peso + "</br>";
+                        spanData.innerHTML = "Data: <br>"+ publicacao.data + "</br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        btnAdotar.innerHTML = "Adotado!";
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idCadastro;
+                        spanNome.className = "publicacao-nome";
+                        spanRaca.innerHTML = "publicacao-raca";
+                        spanPeso.innerHTML = "publicacao-peso";
+                        spanData.innerHTML = "publicacao-data";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divButtons.className = "div-buttons"
+
+                        btnAdotar.className = "publicacao-btn-adotar"
+                        btnAdotar.id = "btnDeletar" + publicacao.idAviso;
+                        btnAdotar.setAttribute("onclick", `deletar(${publicacao.idCadastro})`);
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanRaca);
+                        divPublicacao.appendChild(spanPeso);
+                        divPublicacao.appendChild(spanData);
+                        divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnAdotar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function testar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+        divResultado.innerHTML = formulario.get("descricao");
+
+        finalizarAguardar();
+
+        return false;
+    }
+
+</script>
