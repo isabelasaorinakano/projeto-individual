@@ -1,8 +1,8 @@
-var avisoModel = require("../models/avisoModel");
+var cadastroGatinhoModel = require("../models/cadastroGatinhoModel");
 
 function testar(req, res) {
-    console.log("ENTRAMOS NO avisoController");
-    res.send("ENTRAMOS NO AVISO CONTROLLER");
+    console.log("ENTRAMOS NO cadastroGatinhoContoller");
+    res.send("ENTRAMOS NO CADASTRO_GATINHO CONTROLLER");
 }
 
 function listar(req, res) {
@@ -14,7 +14,7 @@ function listar(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        console.log("Houve um erro ao buscar os gatinhos: ", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -36,7 +36,7 @@ function listarPorUsuario(req, res) {
             function (erro) {
                 console.log(erro);
                 console.log(
-                    "Houve um erro ao buscar os avisos: ",
+                    "Houve um erro ao buscar os gatinhos: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -59,25 +59,32 @@ function pesquisarDescricao(req, res) {
         ).catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+                console.log("Houve um erro ao buscar os gatinhos: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
         );
 }
 
 function publicar(req, res) {
-    var titulo = req.body.titulo;
+    var nome = req.body.nome_gatinho;
+    var raca = req.body.raca_gatinho;
+    var peso = req.body.peso_gatinho;
+    var data = req.body.data_cadastro_gatinho;
     var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
 
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
-        res.status(400).send("A descrição está indefinido!");
+    if (nome == undefined) {
+        res.status(400).send("O nome está indefinido!");
+    } else if (raca == undefined) {
+        res.status(400).send("A raça está indefinida!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
-    } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+    }else if(peso == undefined){
+        res.status(403).send("O peso  está indefinido!");
+    }else if(data == undefined){
+        res.status(403).send("A data está indefinida!");
+    }else {
+        cadastroGatinhoModel.publicar(nome,raca,peso,data, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -86,37 +93,18 @@ function publicar(req, res) {
             .catch(
                 function (erro) {
                     console.log(erro);
-                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    console.log("Houve um erro ao realizar o cadastro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
     }
 }
 
-function editar(req, res) {
-    var novaDescricao = req.body.descricao;
-    var idAviso = req.params.idAviso;
-
-    avisoModel.editar(novaDescricao, idAviso)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-
-}
 
 function deletar(req, res) {
-    var idAviso = req.params.idAviso;
+    var idCadastro = req.params.idAviso;
 
-    avisoModel.deletar(idAviso)
+    cadastroGatinhoModel.adotar(idCadastro)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -125,7 +113,7 @@ function deletar(req, res) {
         .catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                console.log("Houve um erro ao adotar o gatinho: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
         );
@@ -137,6 +125,5 @@ module.exports = {
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    editar,
-    deletar
+    adotar
 }
