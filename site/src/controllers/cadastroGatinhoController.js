@@ -125,5 +125,5 @@ module.exports = {
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    adotar
+    deletar
 }
