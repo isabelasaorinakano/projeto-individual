@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./logon.css">
     <link rel="stylesheet" href="../css/style-geral.css">
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <script src="../js/funcoes.js"></script>
     <title>Bem vindo! | Cadastre gatinhos</title>
 </head>
@@ -22,6 +23,7 @@
                 <a class="btn-logout" onclick="limparSessao()">Home</a>
             </nav>
         </div>
+        
     </header>
     <main>
 
@@ -82,11 +84,10 @@
         var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
-            nome: form_postagem.nome_gatinho.value,
-            raca: form_postagem.raca_gatinho.value,
-            peso: form_postagem.peso_gatinho.value,
-            data: form_postagem.data_cadastro_gatinho.value,
-            descricao: form_postagem.descricao.value
+            nome: nome_gatinho.value,
+            raca: raca_gatinho.value,
+            data: data_cadastro_gatinho.value,
+            descricao: textarea_descricao.value
         }
 //cadastroGatinho é uma rota
         fetch(`/cadastroGatinho/publicar/${idUsuario}`, {
@@ -101,9 +102,9 @@
 
             if (resposta.ok) {
                 window.alert("Cadastro realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "/logon/logon.html";
-                limparFormulario();
-                finalizarAguardar();
+                window.location = "n./logon.html";
+                //limparFormulario();
+               // finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -111,7 +112,7 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+         //   finalizarAguardar();
         });
 
         return false;
@@ -220,12 +221,12 @@
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            finalizarAguardar();
+    //        finalizarAguardar();
         });
     }
 
     function testar() {
-        aguardar();
+  //      aguardar();
 
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
 
@@ -234,7 +235,7 @@
         divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
         divResultado.innerHTML = formulario.get("descricao");
 
-        finalizarAguardar();
+//        finalizarAguardar();
 
         return false;
     }
