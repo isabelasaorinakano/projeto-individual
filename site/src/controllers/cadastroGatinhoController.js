@@ -73,6 +73,10 @@ function publicar(req, res) {
     var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
 
+    console.log("cheguei aqui na controller");
+    console.log("req", req);
+    console.log("req", res);
+
     if (nome == undefined) {
         res.status(400).send("O nome está indefinido!");
     } else if (raca == undefined) {

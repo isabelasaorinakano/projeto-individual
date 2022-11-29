@@ -28,7 +28,7 @@
     <main>
 
         <div class="div-form">
-            <form id="form_postagem" method="post" onsubmit="return publicar()">
+            <form id="form_postagem" method="post" onsubmit="publicar()">
                 <h1>Cadastre novos gatinhos!</h1>
                 <p>Olá, <b id="b_usuario">Usuário</b></p>
 
@@ -52,11 +52,9 @@
                 </div>
                 <div class="campo">
                     <label for="textarea_descricao">Descrição:</label>
-                    <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                    <textarea name="textarea_descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
                 </div>
-
-
-                <button>Enviar</button>
+                <button type="submit" value="submit">Enviar</button>
             </form>
         </div>
         <h1>Mural de Avisos</h1>
@@ -73,7 +71,6 @@
 </html>
 
 <script>
-    
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
@@ -85,24 +82,33 @@
 
         var corpo = {
             nome: nome_gatinho.value,
+            peso: peso_gatinho.value,
             raca: raca_gatinho.value,
             data: data_cadastro_gatinho.value,
             descricao: textarea_descricao.value
         }
 //cadastroGatinho é uma rota
         fetch(`/cadastroGatinho/publicar/${idUsuario}`, {
-            method: "post",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(corpo)
+            body: JSON.stringify(
+                ({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: corpo,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+            )
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
                 window.alert("Cadastro realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "n./logon.html";
+                window.location = "./logon.html";
                 //limparFormulario();
                // finalizarAguardar();
             } else if (resposta.status == 404) {
@@ -114,9 +120,6 @@
             console.log(`#ERRO: ${resposta}`);
          //   finalizarAguardar();
         });
-
-        return false;
-
     }
 
     // function editar(idCadastro) {
@@ -127,27 +130,27 @@
 
     // }
 
-     function adotar(idCadastro) {
-         console.log("Criar função de adotar gatinho escolhido - ID" + idCadastro);
-         fetch(`/cadastroGatinho/adotar/${idCadastro}`, {
-             method: "DELETE",
-             headers: {
-                 "Content-Type": "application/json"
-             }
-         }).then(function (resposta) {
+    //  function adotar(idCadastro) {
+    //      console.log("Criar função de adotar gatinho escolhido - ID" + idCadastro);
+    //      fetch(`/cadastroGatinho/adotar/${idCadastro}`, {
+    //          method: "DELETE",
+    //          headers: {
+    //              "Content-Type": "application/json"
+    //          }
+    //      }).then(function (resposta) {
 
-             if (resposta.ok) {
-                 window.alert("Gatinho cadastrado pelo usuário" + sessionStorage.getItem("NOME_USUARIO") + " foi adotado!");
-                 window.location = "/logon/logon.html"
-             } else if (resposta.status == 404) {
-                 window.alert("Deu 404!");
-             } else {
-                 throw ("Houve um erro ao tentar realizar o cadastro de gatinho! Código da resposta: " + resposta.status);
-            }
-         }).catch(function (resposta) {
-             console.log(`#ERRO: ${resposta}`);
-         });
-     }
+    //          if (resposta.ok) {
+    //              window.alert("Gatinho cadastrado pelo usuário" + sessionStorage.getItem("NOME_USUARIO") + " foi adotado!");
+    //              window.location = "/logon/logon.html"
+    //          } else if (resposta.status == 404) {
+    //              window.alert("Deu 404!");
+    //          } else {
+    //              throw ("Houve um erro ao tentar realizar o cadastro de gatinho! Código da resposta: " + resposta.status);
+    //         }
+    //      }).catch(function (resposta) {
+    //          console.log(`#ERRO: ${resposta}`);
+    //      });
+    //  }
 
     function atualizarFeed() {
         //aguardar();
@@ -225,19 +228,6 @@
         });
     }
 
-    function testar() {
-  //      aguardar();
-
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
-
-        var divResultado = document.getElementById("div_feed");
-
-        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
-        divResultado.innerHTML = formulario.get("descricao");
-
-//        finalizarAguardar();
-
-        return false;
-    }
+   
 
 </script>
