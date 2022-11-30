@@ -76,7 +76,7 @@ function publicar( nome,raca,peso,data, descricao, idUsuario) {
     console.log("ACESSEI O CADASTRO_GATINHO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", nome,raca,peso,data, descricao, idUsuario);
     console.log("Cheguei na model,  nome,raca,peso,data,descricao,fk_usuario")
     var instrucao = `
-        INSERT INTO cadastroGatinho ( nome, raca, peso, data, descricao, fk_usuario) VALUES ('${nome}', ${raca}, '${peso}', '${data}', ${descricao}, ${idUsuario});
+        INSERT INTO cadastroGatinho ( nome, raca, peso, data, descricao, fk_usuario) VALUES ('${nome}', '${raca}', '${peso}', '${data}', '${descricao}', ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -92,10 +92,19 @@ function adotar(idCadastro) {
     return database.executar(instrucao);
 }
 
+function exibirGatos(){
+    var instrucao =  `
+        SELECT * FROM cadastroGatinho;
+    `
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    adotar
+    adotar,
+    exibirGatos
 }

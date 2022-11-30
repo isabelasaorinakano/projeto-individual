@@ -66,12 +66,12 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
-    var nome = req.body.nome_gatinho;
-    var raca = req.body.raca_gatinho;
-    var peso = req.body.peso_gatinho;
-    var data = req.body.data_cadastro_gatinho;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
+    var nome = req.body.nomeGatoServer;
+    var raca = req.body.racaServer;
+    var peso = req.body.pesoServer;
+    var data = req.body.dataServer;
+    var descricao = req.body.descricaoServer;
+    var idUsuario = req.body.idUsuarioServer;
 
     console.log("cheguei aqui na controller");
     console.log("req", req);
@@ -88,7 +88,7 @@ function publicar(req, res) {
     }else if(data == undefined){
         res.status(403).send("A data está indefinida!");
     }else {
-        cadastroGatinhoModel.publicar(nome,raca,peso,data, descricao, idUsuario)
+        cadastroGatinhoModel.publicar(nome, raca, peso, data, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -102,6 +102,22 @@ function publicar(req, res) {
                 }
             );
     }
+}
+
+function exibirGatos(req, res){
+    cadastroGatinhoModel.exibirGatos()
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao adotar o gatinho: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 
@@ -129,5 +145,6 @@ module.exports = {
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
-    deletar
+    deletar,
+    exibirGatos
 }

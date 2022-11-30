@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="./logon.css">
     <link rel="stylesheet" href="../css/style-geral.css">
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
-    <script src="../js/funcoes.js"></script>
     <title>Bem vindo! | Cadastre gatinhos</title>
 </head>
-<!-- 
-<body onload="validarSessao(), atualizarFeed()"> -->
     <body>
     <!-- header -->
     <header class="header">
@@ -28,7 +25,7 @@
     <main>
 
         <div class="div-form">
-            <form id="form_postagem" method="post" onsubmit="publicar()">
+            <form>
                 <h1>Cadastre novos gatinhos!</h1>
                 <p>Olá, <b id="b_usuario">Usuário</b></p>
 
@@ -54,7 +51,7 @@
                     <label for="textarea_descricao">Descrição:</label>
                     <textarea name="textarea_descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
                 </div>
-                <button type="submit" value="submit">Enviar</button>
+                <a onclick="publicar()">Enviar</a>
             </form>
         </div>
         <h1>Mural de Avisos</h1>
@@ -87,8 +84,8 @@
             data: data_cadastro_gatinho.value,
             descricao: textarea_descricao.value
         }
-//cadastroGatinho é uma rota
-        fetch(`/cadastroGatinho/publicar/${idUsuario}`, {
+        //cadastroGatinho é uma rota
+        fetch(`/cadastroGatinho/publicar`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -97,9 +94,12 @@
                 ({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: corpo,
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                nomeGatoServer: corpo.nome,
+                racaServer: corpo.raca,
+                pesoServer: corpo.peso,
+                dataServer: corpo.data,
+                descricaoServer: corpo.descricao,
+                idUsuarioServer: idUsuario
             })
             )
         }).then(function (resposta) {
@@ -121,6 +121,26 @@
          //   finalizarAguardar();
         });
     }
+
+    function exibirGatos(){
+        fetch("/cadastroGatinho/exibirGatos").then(function (resposta){
+        if(resposta.ok){
+          resposta.json().then(function (response){
+            var respostaJSON = JSON.parse(JSON.stringify(response))
+            console.log(respostaJSON)
+            for(var i = 0; i < respostaJSON.length; i++){
+                console.log(respostaJSON[i].nome)
+                feed_container.innerHTML += `
+                <div>${respostaJSON[i].nome}</div>
+                
+                `
+            }
+
+          })
+        }
+      })
+    }
+    exibirGatos()
 
     // function editar(idCadastro) {
     //     sessionStorage.ID_CADASTRO_EDITANDO = idCadastro;
@@ -152,82 +172,7 @@
     //      });
     //  }
 
-    function atualizarFeed() {
-        //aguardar();
-        fetch("/cadastroGatinho/listar").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
-                }
-
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementById("feed_container");
-                    feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanNome = document.createElement("span");
-                        var spanRaca = document.createElement("span");
-                        var spanPeso = document.createElement("span");
-                        var spanData = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-
-                        //nome, raça,peso, data, descricao
-                       
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idCadastro + "</b>";
-                        spanNome.innerHTML = "Voluntario: <b>" + publicacao.nome + "</b>";
-                        spanRaca.innerHTML = "Raça: <br>" + publicacao.raca + "</br>";
-                        spanPeso.innerHTML = "Peso: <br>"+ publicacao.peso + "</br>";
-                        spanData.innerHTML = "Data: <br>"+ publicacao.data + "</br>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnAdotar.innerHTML = "Adotado!";
-
-                        divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idCadastro;
-                        spanNome.className = "publicacao-nome";
-                        spanRaca.innerHTML = "publicacao-raca";
-                        spanPeso.innerHTML = "publicacao-peso";
-                        spanData.innerHTML = "publicacao-data";
-                        divDescricao.className = "publicacao-descricao";
-
-                        divButtons.className = "div-buttons"
-
-                        btnAdotar.className = "publicacao-btn-adotar"
-                        btnAdotar.id = "btnDeletar" + publicacao.idAviso;
-                        btnAdotar.setAttribute("onclick", `deletar(${publicacao.idCadastro})`);
-
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanRaca);
-                        divPublicacao.appendChild(spanPeso);
-                        divPublicacao.appendChild(spanData);
-                        divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnAdotar);
-                        feed.appendChild(divPublicacao);
-                    }
-
-                    finalizarAguardar();
-                });
-            } else {
-                throw ('Houve um erro na API!');
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
-    //        finalizarAguardar();
-        });
-    }
-
+    
    
 
 </script>

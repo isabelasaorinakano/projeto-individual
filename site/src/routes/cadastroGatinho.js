@@ -19,10 +19,13 @@ router.get("/pesquisar/:descricao", function (req, res) {
     cadastroGatinhoController.pesquisarDescricao(req, res);
 });
 
-router.post("/publicar/:idUsuario", function (req, res) {
+router.post("/publicar", function (req, res) {
     cadastroGatinhoController.publicar(req, res);
 });
 
+router.get("/exibirGatos", function (req, res){
+    cadastroGatinhoController.exibirGatos(req, res)
+})
 
 router.delete("/adotar/:idUsuario", function (req, res) {
     cadastroGatinhoController.adotar(req, res);
