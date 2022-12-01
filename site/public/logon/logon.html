@@ -8,35 +8,59 @@
     <link rel="stylesheet" href="./logon.css">
     <link rel="stylesheet" href="../css/style-geral.css">
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+
     <title>Bem vindo! | Cadastre gatinhos</title>
 </head>
-    <body>
+
+<body>
     <!-- header -->
     <header class="header">
         <div class="container">
             <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+            <p>Olá, <b id="b_usuario">Usuário</b></p>
+
 
             <nav class="navegacao">
                 <a class="btn-logout" onclick="limparSessao()">Home</a>
             </nav>
         </div>
-        
+
     </header>
     <main>
 
+        <!-- carousel -->
+
+
+        <!-- <div class="container-carousel">
+            <button class="arrow-left control" aria-label="Previous image">◀</button>
+            <button class="arrow-right control" aria-label="Next Image">▶</button>
+            <div class="gallery-wrapper">
+                <div class="gallery">
+                
+                    <img src="../assets/01-teste-background.jpg" alt="Beach Image" class="item current-item">
+                    <img src="../assets/BACKGROUND-LOGON.jpg.jpg alt= " alt="Animal Image" class="item current-item">
+                    <img src="../assets/background-quiz.jpeg" alt="Street Image" class="item current-item">
+                    <img src="../assets/02-teste-background.jpg" alt="Zoo Image" class="item current-item">
+                    <img src="../assets/BACKGROUND-LOGON.jpg" alt="Model Image" class="item current-item">
+                </div>
+            </div>
+        </div> -->
+
+
         <div class="div-form">
             <form>
-                <h1>Cadastre novos gatinhos!</h1>
-                <p>Olá, <b id="b_usuario">Usuário</b></p>
+                <h1 class="titulo-forms">Cadastre novos gatinhos!</h1>
+
 
                 <div class="campo">
                     <label for="nome_gatinho">Nome:</label>
-                    <input name="nome_gatinho" id="nome_gatinho"  maxlength="100" type="text" placeholder="Nome do seu gatinho">
+                    <input name="nome_gatinho" id="nome_gatinho" maxlength="100" type="text"
+                        placeholder="Nome do seu gatinho">
                 </div>
 
                 <div class="campo">
                     <label for="raca_gatinho">Raça:</label>
-                    <input name="raca_gatinho" id="raca_gatinho"  maxlength="100" type="text" placeholder="Ex: Frajola">
+                    <input name="raca_gatinho" id="raca_gatinho" maxlength="100" type="text" placeholder="Ex: Frajola">
                 </div>
 
                 <div class="campo">
@@ -54,8 +78,11 @@
                 <a onclick="publicar()" class="btn-enviar">Enviar</a>
             </form>
         </div>
-        <h1>Mural de Avisos</h1>
+
+
         <div class="div-results">
+            <h1>Gatinhos cadastrados!</h1>
+            <p>Veja aqui os gatinhos cadastrados no nosso sistema</p>
             <div id="feed_container" class="feed-container">
             </div>
         </div>
@@ -92,15 +119,15 @@
             },
             body: JSON.stringify(
                 ({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeGatoServer: corpo.nome,
-                racaServer: corpo.raca,
-                pesoServer: corpo.peso,
-                dataServer: corpo.data,
-                descricaoServer: corpo.descricao,
-                idUsuarioServer: idUsuario
-            })
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeGatoServer: corpo.nome,
+                    racaServer: corpo.raca,
+                    pesoServer: corpo.peso,
+                    dataServer: corpo.data,
+                    descricaoServer: corpo.descricao,
+                    idUsuarioServer: idUsuario
+                })
             )
         }).then(function (resposta) {
 
@@ -110,7 +137,7 @@
                 window.alert("Cadastro realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
                 window.location = "./logon.html";
                 //limparFormulario();
-               // finalizarAguardar();
+                // finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -118,27 +145,31 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-         //   finalizarAguardar();
+            //   finalizarAguardar();
         });
     }
 
-    function exibirGatos(){
-        fetch("/cadastroGatinho/exibirGatos").then(function (resposta){
-        if(resposta.ok){
-          resposta.json().then(function (response){
-            var respostaJSON = JSON.parse(JSON.stringify(response))
-            console.log(respostaJSON)
-            for(var i = 0; i < respostaJSON.length; i++){
-                console.log(respostaJSON[i].nome)
-                feed_container.innerHTML += `
-                <div>${respostaJSON[i].nome}</div>
+    function exibirGatos() {
+        fetch("/cadastroGatinho/exibirGatos").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (response) {
+                    var respostaJSON = JSON.parse(JSON.stringify(response))
+                    console.log(respostaJSON)
+                    for (var i = 0; i < respostaJSON.length; i++) {
+                        console.log(respostaJSON[i].nome)
+                        feed_container.innerHTML += `
+                <div><b>Nome:</b>${respostaJSON[i].nome}</div><br>
+                <div><b>Raça:</b>${respostaJSON[i].raca}</div><br>
+                <div><b>Peso:</b>${respostaJSON[i].peso}</div><br>
+                <div><b>Data:</b>${respostaJSON[i].data}</div><br>
+                <div><b>Descrição:</b>${respostaJSON[i].descricao}</div><br>
                 
                 `
-            }
+                    }
 
-          })
-        }
-      })
+                })
+            }
+        })
     }
     exibirGatos()
 
@@ -172,7 +203,7 @@
     //      });
     //  }
 
-    
-   
+
+
 
 </script>

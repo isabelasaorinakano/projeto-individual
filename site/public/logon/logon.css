@@ -2,7 +2,75 @@ body{
 background: rgb(217,132,148);
 background: linear-gradient(90deg, rgba(217,132,148,1) 35%, rgba(0,198,255,1) 100%, rgba(217,132,148,1) 100%);
 font-family: roboto;
+
+/* background-image: url(../assets/body.jpg);
+background-size: cover; */
 }
+
+/* carousel */
+
+
+.container-carousel {
+  position: relative;
+  height: 100vh;
+  margin-top: 5vh;
+  max-width: 100%;
+ 
+}
+
+.gallery-wrapper {
+  overflow-x: auto;
+}
+
+.arrow-left,
+.arrow-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  font-size: 20px;
+  line-height: 250px;
+  width: 40px;
+  color: #fff;
+  transition: all 600ms ease-in-out;
+  background: linear-gradient(to left, transparent 0%, black 200%);
+  opacity: 0.1;
+  cursor: pointer;
+  border: none;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+  opacity: 1;
+}
+
+.arrow-right {
+  right: 0;
+  left: auto;
+  text-align: right;
+  background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+}
+
+.item {
+  width: 100%;
+  height: 100vh;
+  flex-shrink: 0;
+  transition: all 600ms ease-in-out;
+  opacity: 0.5;
+}
+
+.current-item {
+  opacity: 1;
+}
+
+/* fim carousel */
 
 .btn-logout{
   margin-top: 40px;
@@ -48,11 +116,14 @@ header{
     margin-left: 5em;
     margin-right: 5em;
     margin-top: 4em;
+    margin-bottom: 5em;
     border-radius: 0.5em;
     height: 20vh;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+
  .container-main{
 display: flex;
 justify-content: center;
@@ -61,36 +132,17 @@ height: 100vh;
 
 margin-left: 5em;
 margin-right: 5em;
-margin-top: 4em;
 height: 90%;
 border-radius: 0.5em;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  }
 
-/* } */
-
-/* .formulario{
-  
-    background-color: #ffffff;
-    height: 100vh;
-    padding: 30px 90px 0px 80px;
-   
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20vh;
-    margin-bottom: 20vh;
-  
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  } */
 
   form{
-   
+  
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    opacity: 10px;
     padding: 30px 90px 0px 80px;
-    height: 100vh;
+    height: 120h;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -99,10 +151,18 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-top: 5vh;
     margin-bottom: 5vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
     }
-h1{
+
+
+
+    
+.titulo-forms{
     margin-top: 5vh;
+    color: #D98494;
     margin-bottom: 5vh;
+   text-shadow: 1px 2px 2px rgba(0,0,0,0.6);
+  
 } 
 
  input{
@@ -122,6 +182,16 @@ h1{
     border: 1px solid #ccc;
 	border-radius: 3px;
 	margin-bottom: 10px;
+  }
+
+  textarea:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+  textarea:hover{
+    border-style: none;
+    border-bottom: #D98494 3px solid;
   }
 
   input:hover, select:hover {
@@ -148,48 +218,58 @@ h1{
     margin-bottom: 10vh;
   }
 
-  /* .formulario img{
-      width: 18vw;
-      height: 35vh;
-  } */
 
 
 .div-form{
   
-  background-image: url(../assets/BACKGROUND-LOGON.jpg.jpg);
+  background-image: url(../assets/03-teste-background.jpg);
+  animation: backgroundAnim 5s ease 0s 1 normal forwards;
   background-repeat: no-repeat;
   background-size: 100%;
-  padding: 30px 90px 0px 80px;
-  /* padding: 5em;
-  height: 100vh; */
- 
+  width: 100%;
+  height: 140vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
- margin-top: 20vh;
   margin-bottom: 20vh;
-  border-top: 5px solid #D98494;
+
 
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
+
+ @keyframes backgroundAnim {
+	0% {
+		background-position: right bottom;
+		background-size: 100%;
+	}
+
+	100% {
+		background-position: right bottom;
+		background-size: 150%;
+	}
+
+}
+
   .formulario button:hover{
     background: #84D9D9;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
-   h1{
-      color: #D98494;
-      font-weight: bold;
-      margin-bottom: 15px;
-  }
+  
+
+  
+    
+
 
 
   .campo label{
     color: #D98494;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+    text-shadow: 1px 2px 2px rgba(0,0,0,0.6);
+   
   }
 
    a{
@@ -205,14 +285,77 @@ h1{
     justify-content: flex-start;
     margin-bottom: 2vh;
   }
-  /* .resultado{
-    height: 10px;
-    background-color: #ffffff;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
-    margin-left: 5em;
-    margin-right: 5em;
+
+  .feed-container{
+   background-color: white;
+   margin-top: 5vh;
+   margin-bottom: 5vh;
+   width: 30%;
+   padding: 5em;
+   border-radius: 4px;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+
+  .div-results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .div-results h1{
+    color: #D98494;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-} */
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    text-shadow: 4px 4px black;
+    animation: myAnim 2s ease 5s infinite normal forwards;
+  }
 
+  .div-results p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 2px 2px rgba(0,0,0,0.6);
+    
+  }
 
+  @keyframes myAnim {
+    0%,
+    100% {
+      transform: rotate(0deg);
+      transform-origin: 50% 0;
+    }
+  
+    10% {
+      transform: rotate(2deg);
+    }
+  
+    20%,
+    40%,
+    60% {
+      transform: rotate(-4deg);
+    }
+  
+    30%,
+    50%,
+    70% {
+      transform: rotate(4deg);
+    }
+  
+    80% {
+      transform: rotate(-2deg);
+    }
+  
+    90% {
+      transform: rotate(2deg);
+    }
+  }
+  
