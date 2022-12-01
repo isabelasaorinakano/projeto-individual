@@ -4,6 +4,45 @@ background: linear-gradient(90deg, rgba(217,132,148,1) 35%, rgba(0,198,255,1) 10
 font-family: roboto;
 }
 
+.btn-logout{
+  margin-top: 40px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #D98494;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.5s;
+  margin-bottom: 5vh;
+}
+
+.btn-logout:hover{
+  background: #84D9D9;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-enviar{
+  margin-top: 40px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #D98494;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.5s;
+  margin-bottom: 5vh;
+}
+
+.btn-enviar:hover{
+  background: #84D9D9;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
 header{
     
     margin-left: 5em;
@@ -47,7 +86,9 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   } */
 
   form{
-    background-color: #ffffff;
+   
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    opacity: 10px;
     padding: 30px 90px 0px 80px;
     height: 100vh;
     border-radius: 20px;
@@ -111,9 +152,11 @@ h1{
       width: 18vw;
       height: 35vh;
   } */
+
+
 .div-form{
   
-  background-image: url(../assets/274725.jpg);
+  background-image: url(../assets/BACKGROUND-LOGON.jpg.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   padding: 30px 90px 0px 80px;
