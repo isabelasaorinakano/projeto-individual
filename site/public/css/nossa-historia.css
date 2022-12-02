@@ -92,11 +92,60 @@ text-align: justify;
 }
 
 .header-galery h1{
+    color: #D98494;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 0.5em;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: 'Pacifico', cursive;
     font-size: 5rem;
-    color: #FFF;
     text-shadow: 4px 4px black;
+    animation: myAnim 2s ease 5s infinite normal forwards;
 }
+
+@keyframes myAnim {
+    0%,
+    100% {
+      transform: rotate(0deg);
+      transform-origin: 50% 0;
+    }
+  
+    10% {
+      transform: rotate(2deg);
+    }
+  
+    20%,
+    40%,
+    60% {
+      transform: rotate(-4deg);
+    }
+  
+    30%,
+    50%,
+    70% {
+      transform: rotate(4deg);
+    }
+  
+    80% {
+      transform: rotate(-2deg);
+    }
+  
+    90% {
+      transform: rotate(2deg);
+    }
+  }
+  
+  .formulario button:hover{
+    background: #84D9D9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  
+
+  
 .gallery-items{
     width: 340px;
     height: 340px;

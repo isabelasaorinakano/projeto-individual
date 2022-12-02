@@ -117,7 +117,7 @@
 
 <script>
     function cadastrar() {
-        aguardar();
+       
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeVar = ipt_nome.value;
@@ -125,31 +125,9 @@
         var senhaVar = ipt_senha.value;
 
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Certifique-se que todos os campos estão preenchidos";
-
-            var cor_erro = "#FF0000";
-
-            //validações
-
-            ipt_nome.style.borderColor = cor_erro;
-            span_nome_inválido.innerHTML = "Nome inválido!";
-
-
-            ipt_email.style.borderColor = cor_erro;
-            span_email_inválido.innerHTML = "email inválido";
-
-            ipt_senha.style.borderColor = cor_erro;
-            span_senha_inválida.innerHTML = "senha inválida";
-
-            finalizarAguardar();
-            return false;
-
-        }
-        else {
+        if (verificarCadastro()) {
+            aguardar();
             setInterval(sumirMensagem, 5000)
-        }
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -193,5 +171,8 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
+}   
 
 </script>
+
+<script src="./js/cadastro.js"></script>
