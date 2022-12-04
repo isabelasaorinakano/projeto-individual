@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="exibirQuantidadeGatos()">
 
       <!-- header -->
   <header class="header">
@@ -62,14 +62,14 @@
 
 
           <div class="cards-blog">
-            <b class="titulo-kpi-gatos">25</b>
+            <b id="tituloKpiGatos" class="titulo-kpi-gatos">0</b>
             <p class="titulo-kpi">Gatos</p>
           </div>
 
 
 
           <div class="cards-blog">
-            <b class="titulo-kpi-racas">25</b>
+            <b id="tituloKpiRacas" class="titulo-kpi-racas">0</b>
             <p class="titulo-kpi">raças</p>
           </div>
           
@@ -109,6 +109,24 @@
     sessionStorage.clear();
     location = "index.html"
   } 
+
+
+  function exibirQuantidadeGatos() {
+        fetch("/exibir_qtd_gatos/exibirQuantidadeGatos").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (response) {
+                    var respostaJSON = JSON.parse(JSON.stringify(response))
+                    console.log(respostaJSON[0])
+                    tituloKpiGatos.innerHTML=  respostaJSON.totalGatos[0];
+                    tituloKpiRacas.innerHTML=  respostaJSON.totalRacas[0];
+                  
+
+                })
+            }
+        })
+    }
+
+    // exibirQuantidadeGatos()
 </script>
 
 
