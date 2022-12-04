@@ -101,8 +101,11 @@ function exibirGatos(){
 
 function exibirQuantidadeGatos(){
     var instrucao =  `
-    SELECT COUNT(*) FROM cadastroGatinho;
-`
+    select count(0) as 'totalGatos', count(distinct raca) as 'totalRacas' from cadastroGatinho;
+    
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
 return database.executar(instrucao);
 }
 

@@ -125,6 +125,7 @@ function exibirQuantidadeGatos(req,res){
     .then(
         function (resultado) {
             res.json(resultado);
+            console.log('controller ok');
         }
     )
     .catch(

@@ -11,7 +11,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var cadastroGatinho = require("./src/routes/cadastroGatinho");
-// var medidasRouter = require("./src/routes/medidas");
+var exibirgatos = require("./src/routes/exibir_qtd_gatos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,6 +22,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/cadastroGatinho", cadastroGatinho);
+app.use("/exibir_qtd_gatos", exibirgatos);
 // app.use("/medidas", medidasRouter)
 
 app.listen(PORTA, function () {
