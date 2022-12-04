@@ -1,0 +1,105 @@
+ 
+  body{
+    background: rgb(217,132,148);
+    background: linear-gradient(90deg, rgb(211, 144, 156) 0%, rgba(217,132,148,1) 32%, rgba(132,217,217,1) 97%, rgba(0,212,255,1) 100%);
+    font-family:'Roboto', sans-serif;
+  }
+
+  .gatinho-png{
+    position: absolute;
+    margin-left: 38em;
+    margin-bottom: 30em;
+  }
+
+  button{
+    border-style: none;
+  }
+  button:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+ /* estilização alimentação */
+ .simuladorAlimentacao .container{
+    display: block;
+    background-color: #Ffff;
+  
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  }
+
+  .simuladorAlimentacao h1{
+    color: #000;
+    width: 50%;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #D98494;
+  }
+
+  .simuladorAlimentacao p{
+    margin-bottom: 30px;
+    text-align: justify;
+    width: 50%;
+  }
+
+  label{
+    color: #D98494;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  
+  select:hover, select:hover {
+    border-bottom: #D98494 3px solid;
+  }
+
+  select:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+  .simule div{
+    display: flex;
+    align-items: center;
+  }
+
+  .simuladorAlimentacao select{
+    padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 50%;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	color: #2C3E50;
+	font-size: 13px;
+  }
+
+
+  .containerCards{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .containerCards .card{
+    background-color: #Ffff ;
+    border: 4px solid #D98494;
+    width: 50%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
+    padding: 10px 40px;
+    border-radius: 20px;
+    transition: 0.5s;
+  }
+
+  .div-resultado{
+text-align: justify;
+  }
+
+  .containerCards .card h1{
+    font-size: 30px;
+  }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./dashboard.css">
+  <link rel="stylesheet" href="../css/style-geral.css">
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <title>Pick.meCat | Dashboard</title>
+
+</head>
+
+<body>
+
+      <!-- header -->
+  <header class="header">
+    <div class="container">
+      <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+     
+
+      <p>Olá, <b id="b_usuario">Usuário</b></p>
+
+      <nav class="navegacao">
+        <ul>
+          <li><a href="./logon.html">Cadastre novos gatinhos!</a></li>
+          <li><a href="./alimente-me.html">Como alimentar seu gato?</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
+
+        </ul>
+
+        <a class="botao-cadastro" href="../index.html" onclick=" logout()">logout</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+  
+  <div class="banner">
+    <div class="dashboard">
+      <div class="divLateral">
+        <div>
+          <img id="logo" src="../assets/logo.png" alt="">
+          <img src="../assets/cat-bg-dash.png" id="cat-dash">
+         
+          <img>
+
+        </div>
+
+
+      </div>
+      <main>
+        <div class="titulo-nosso-blog">
+          <h1>Analytics</h1>
+         
+        </div>
+   
+
+        <div class="container-cards-blog">
+
+
+          <div class="cards-blog">
+            <b class="titulo-kpi-gatos">25</b>
+            <p class="titulo-kpi">Gatos</p>
+          </div>
+
+
+
+          <div class="cards-blog">
+            <b class="titulo-kpi-racas">25</b>
+            <p class="titulo-kpi">raças</p>
+          </div>
+          
+        
+        </div>
+      
+    
+<!--      
+        <div id="resultado" class="div_resultado"> 
+          <p> <b id="b_usuario">Usuário</b> Você cadastrou <b>25</b> gatos em nosso sistema e 
+            <b>25</b> raças diferentes, obrigado por contribuir com nossa causa!</p> 
+       
+   
+     -->
+    </div>
+
+   
+
+    </main>
+
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>
+<script>
+
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  function logout() {
+    sessionStorage.clear();
+    location = "index.html"
+  } 
+
+  function logout() {
+    sessionStorage.clear();
+    location = "index.html"
+  } 
+</script>
+
+

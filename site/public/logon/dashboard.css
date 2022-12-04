@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;1,100;1,400;1,500;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family:'Roboto', sans-serif;
+ }
+/* 
+ header */
+
+ #logo {
+  height: 10vw;
+  width: 20vw;
+}
+
+#cat-dash{
+  width: 20vw;
+}
+
+.header {
+  background-color: #ffff;
+  /* -webkit-box-shadow: 0px 0px 8px 2px #BBBAB8; */
+  border-bottom: #D98494 2px solid;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+.navegacao ul {
+  display: flex;
+  align-items: center;
+}
+
+.navegacao ul li {
+  list-style: none;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+
+.navegacao ul li a {
+  text-decoration: none;
+  margin-right: 0px;
+  font-weight: bold;
+  color: #D98494;
+  transition: 0.5s;
+}
+
+.navegacao ul li a:hover {
+  color: #000;
+}
+
+.navegacao a {
+  display: block;
+  margin-right: 30px;
+}
+
+.botao-login {
+  padding: 10px 20px;
+  color: #D98494;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.botao-login:hover {
+  background: #D98494;
+  border-radius: 5px;
+  color: #ffff;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.botao-cadastro {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #ffff;
+  font-weight: bold;
+  background: #D98494;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.botao-cadastro:hover {
+  background: #84D9D9;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+ .banner{
+  background-image: url(../assets/274725.jpg);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard {
+  width: 80%;
+  height: 80%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  display: flex;
+}
+
+/* Painel da esquerda */
+
+.divLateral {
+  background-color:  rgb(255, 255, 255);
+  border-right: 5px solid  #D98494 ;
+  border: 5px solid  #D98494  ;
+  padding: 40px 40px;
+  color: white;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+/* Dashboard */
+ main {
+  width: 100%;
+  height: 36%;
+  margin: 5px;
+}
+
+main .container {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: start;
+} 
+
+
+ 
+
+
+/* Estilização das KPIs */
+
+
+.titulo-nosso-blog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh;
+  
+  
+  }
+
+  .titulo-nosso-blog h1{
+    color: #D98494;
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    text-shadow: 4px 4px black;
+    border-bottom: 5px solid #84D9D9;
+  
+    
+    }
+
+    .titulo-kpi{
+      color: #D98494;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+
+    
+      }
+
+  .titulo-kpi-racas{
+    color: #D98494;
+     font-family: 'Pacifico', cursive;
+     font-size: 3rem;
+   
+  }
+
+  .titulo-kpi-gatos{
+    color: #D98494;
+     font-family: 'Pacifico', cursive;
+     font-size: 3rem;
+  }
+  
+  .container-cards-blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .cards-blog{
+    border: 5px solid #D98494;
+    width: 15vw;
+    height: 25vh;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  
+    
+  }
+ 
+  .cards-blog h1{
+    color: #D98494;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+  }
+  
+  .cards-blog p{
+    margin-bottom: 4vh;
+    
+  }
+
+  .div_resultado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    border-radius: 20px;
+   /* width: 100%; */
+    height: 25vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-left: 10em;
+    margin-right: 10em;
+    border: 4px solid #D98494 ;
+  }
+  
+.div_resultado p{
+  text-align: center;
+  width: 280px;
+}
+
+
+
+
+
+

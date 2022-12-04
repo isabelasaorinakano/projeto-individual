@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="alimente-me.css">
+    <link rel="stylesheet" href="../css/style-geral.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+  
+   <!-- header -->
+   <header class="header">
+    <div class="container">
+      <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+     
+
+      <p>Olá, <b id="b_usuario">Usuário</b></p>
+
+      <nav class="navegacao">
+        <ul>
+          <li><a href="./logon.html">Cadastre novos gatinhos!</a></li>
+          <li><a href="./alimente-me.html">Como alimentar seu gato?</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
+
+        </ul>
+
+        <a class="botao-cadastro" href="../index.html" onclick=" logout()">logout</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+<div class="container">
+    <img src="../assets/gatinhoPNG.png" class="gatinho-png">
+    <div class="simuladorAlimentacao" id="simuladorAlimentacao">
+        <div class="container">
+          <div class="simule">
+
+            <h1>Você sabe como alimentar um gatinho?</h1>
+
+            <p>Muitas vezes ao encontrar um animal de rua ou até mesmo em casos de adoção, 
+               não sabemos qual a forma correta de alimentar seu bichinho. Tendo isso em vista 
+               nós da pick.me Cat criamos uma função que informa a quantidade e qual tipo de alimento seu 
+               gato deve consumir a partir de idade. 
+            </p>
+    
+            <label for="select_idade">Como seu gato se classifica?</label><br>
+            <select id="select_idade">
+                <option value="filhote">filhote</option>
+                <option value="Adulto">Adulto</option>
+                <option value="idoso">Idoso</option>
+              
+               
+            </select><br>
+          
+            
+            <button onclick="calcularAlimentacao()" class="botao-padrao">Veja aqui!</button>
+           
+          </div>
+          <div class="containerCards">
+            <div class="card">
+                <div id="resultado" class="div-resultado">
+
+                </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+   
+     </div>
+
+</div>
+   
+  
+        
+</body>
+</html>
+<script>
+    // var lista_informações = []
+    function calcularAlimentacao(){
+
+        if(select_idade.value == "filhote"){
+
+            resultado.innerHTML=`
+            De <b>0 a 4 meses</b> de vida o gatinho filhote
+            deve-se se alimentar exclusivamente do leite materno. No
+            entanto caso isso não seja possível existem leites articiais que
+            contem todos os nutrientes essenciais para que o filhote se desenvolva.
+            A quantidade varia de <b>50g a 60g</b> no mínimo <b>2 vezes</b> ao dia em um intervalo 
+            de <b> 8 a 12 horas</b>
+            <br>
+            Na transição da amamentação para uma alimentação sólida é recomendado 
+            que seja dado alimentos ricos em antioxidantes que sejam "moles", são as famosas
+            papinhas ou outra opção seria as rações específicas para filhotes que devem ser macias,
+            pequenas e rica em nutrientes. 
+            `
+        }else if(select_idade.value == "Adulto"){
+            resultado.innerHTML=`
+            Um gato é considerado adulto a partir dos <b>12 meses</b> de vida, nesta fase ele come de <b> 10 a 22</b> vezes ao dia
+            e pode-se alimentar de frango, salmão, fígado dentre outros alimentos sólidos. Recomenda-se orientação
+            veterinária sobre o tipo de ração mais indicada para seu bichno de acordo com suas necessidades. 
+            <b>Observação!</b> alimentos humanos como massas, doces e restos de comidas devem ser evitados. 
+            `
+        }else if(select_idade.value == "idoso"){
+            resultado.innerHTML=`
+            Um felino é considerado idoso a partir dos <b>7 anos</b> nessa fase, que corresponde a cerca de 
+            <b>40%</b> de toda sua vida as necessidas nutrionais mudam e são essenciais para que seu gato tenha uma vida longeva
+            e saudável. Nesse período os alimentos deve ser ricps em  <b>proteínas</b> e  <b>antioxidades</b> que estimulem o sistema imunológico
+            do seu gato. É recomendado que os gatos idosos consumam produtos específicos para sua faixa etária variando de cerca de 
+            <b>45g a 75g</b> por no mínimo 2 vezes ao dia.  <b>Dica!</b> Nessa fase a qualidade é mais importante que a quantidade. 
+            
+            `
+
+        }
+       
+
+    }
+</script>

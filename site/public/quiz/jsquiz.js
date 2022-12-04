@@ -1,7 +1,7 @@
 (function() {
     var questions = [{
       question: "Qual a maior raça de gatos do mundo?",
-      choices: ["Persa", "teste", "Maine Coon", "Singapura", "Angorá"],
+      choices: ["Persa", "Maine Coon", "Singapura", "Angorá"],
       correctAnswer: "Maine Coon"
     }, {
       question: "What is 3*6?",

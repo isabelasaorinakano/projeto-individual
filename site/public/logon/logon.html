@@ -9,44 +9,32 @@
     <link rel="stylesheet" href="../css/style-geral.css">
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
 
-    <title>Bem vindo! | Cadastre gatinhos</title>
+    <title>Bem vindo! | Área logon</title>
 </head>
 
 <body>
-    <!-- header -->
-    <header class="header">
-        <div class="container">
-            <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
-            <p>Olá, <b id="b_usuario">Usuário</b></p>
+      <!-- header -->
+  <header class="header">
+    <div class="container">
+      <img src="../assets/logo.png" alt="Pick.Me Cat Logo" id="logo">
+     
 
+      <p>Olá, <b id="b_usuario">Usuário</b></p>
 
-            <nav class="navegacao">
-                <a class="btn-logout" onclick="limparSessao()">Home</a>
-            </nav>
-        </div>
+      <nav class="navegacao">
+        <ul>
+          <li><a href="./logon.html">Cadastre novos gatinhos!</a></li>
+          <li><a href="./alimente-me.html">Como alimentar seu gato?</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
 
-    </header>
+        </ul>
+
+        <a class="botao-cadastro" href="../index.html" onclick=" logout()">logout</a>
+      </nav>
+    </div>
+  </header>
+
     <main>
-
-        <!-- carousel -->
-
-
-        <!-- <div class="container-carousel">
-            <button class="arrow-left control" aria-label="Previous image">◀</button>
-            <button class="arrow-right control" aria-label="Next Image">▶</button>
-            <div class="gallery-wrapper">
-                <div class="gallery">
-                
-                    <img src="../assets/01-teste-background.jpg" alt="Beach Image" class="item current-item">
-                    <img src="../assets/BACKGROUND-LOGON.jpg.jpg alt= " alt="Animal Image" class="item current-item">
-                    <img src="../assets/background-quiz.jpeg" alt="Street Image" class="item current-item">
-                    <img src="../assets/02-teste-background.jpg" alt="Zoo Image" class="item current-item">
-                    <img src="../assets/BACKGROUND-LOGON.jpg" alt="Model Image" class="item current-item">
-                </div>
-            </div>
-        </div> -->
-
-
         <div class="div-form">
             <form>
                 <h1 class="titulo-forms">Cadastre novos gatinhos!</h1>
@@ -173,37 +161,11 @@
     }
     exibirGatos()
 
-    // function editar(idCadastro) {
-    //     sessionStorage.ID_CADASTRO_EDITANDO = idCadastro;
-    //     console.log("cliquei em editar - " + idCadastro);
-    //     window.alert("Você será redirecionado à página de edição de gatinho id número: " + idCadastro);
-    //     window.location = "/dashboard/edicao-aviso.html"
 
-    // }
-
-    //  function adotar(idCadastro) {
-    //      console.log("Criar função de adotar gatinho escolhido - ID" + idCadastro);
-    //      fetch(`/cadastroGatinho/adotar/${idCadastro}`, {
-    //          method: "DELETE",
-    //          headers: {
-    //              "Content-Type": "application/json"
-    //          }
-    //      }).then(function (resposta) {
-
-    //          if (resposta.ok) {
-    //              window.alert("Gatinho cadastrado pelo usuário" + sessionStorage.getItem("NOME_USUARIO") + " foi adotado!");
-    //              window.location = "/logon/logon.html"
-    //          } else if (resposta.status == 404) {
-    //              window.alert("Deu 404!");
-    //          } else {
-    //              throw ("Houve um erro ao tentar realizar o cadastro de gatinho! Código da resposta: " + resposta.status);
-    //         }
-    //      }).catch(function (resposta) {
-    //          console.log(`#ERRO: ${resposta}`);
-    //      });
-    //  }
-
-
+    function logout() {
+        sessionStorage.clear();
+        location = "index.html"
+    }
 
 
 </script>
