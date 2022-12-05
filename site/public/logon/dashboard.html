@@ -117,10 +117,9 @@
                 resposta.json().then(function (response) {
                     var respostaJSON = JSON.parse(JSON.stringify(response))
                     console.log(respostaJSON[0])
-                    tituloKpiGatos.innerHTML=  respostaJSON.totalGatos[0];
-                    tituloKpiRacas.innerHTML=  respostaJSON.totalRacas[0];
-                  
-
+                    var gatos = respostaJSON[0]
+                    tituloKpiGatos.innerHTML=  gatos.totalGatos;
+                    tituloKpiRacas.innerHTML=  gatos.totalRacas;
                 })
             }
         })
