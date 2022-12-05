@@ -1,27 +1,54 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Dynamic Quiz Project</title>
-		<link type='text/css' rel='stylesheet' href='style.css'/>
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans"/>
-	</head>
-	<body>
-		<div id='container'>
-			<div id='title'>
-				<h1>O quão gateiro voce é?</h1>
-			</div>
-   			<br/>
-  			<div id='quiz'></div>
-    		<div class='button' id='next'><a href='#'>Next</a></div>
-    		<div class='button' id='prev'><a href='#'>Prev</a></div>
-    		<div class='button' id='start'> <a href='#'>Start Over</a></div>
-    		<!-- <button class='' id='next'>Next</a></button>
-    		<button class='' id='prev'>Prev</a></button>
-    		<button class='' id='start'> Start Over</a></button> -->
-    	</div>
 
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-		<script type="text/javascript" src='questions.json'></script>
-		<script type='text/javascript' src='jsquiz.js'></script>
-	</body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="images/favicon.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz!</title>
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+    <main class="tela-principal">
+
+        <section class='conteudos'>
+
+            <h1>O quanto você sabe sobre gatos?</h1>
+
+            <article class='centro' id='instrucoes'>
+                Leia a questão e clique na resposta correta
+            </article>
+
+            <article class='questoes'>
+                
+                <header class='questao'>
+                    <span id='numQuestao'></span>
+                    <h2 id='pergunta'></h2>
+                </header>
+
+                <div class='corpo'>
+                    <ol type='A' id='alternativas'>
+                        <li id='a' value='1A' class='respostas' onClick='verificarSeAcertou(this, this)'></li>
+                        <li id='b' value='1B' class='respostas' onClick='verificarSeAcertou(this, this)'></li>
+                        <li id='c' value='1C' class='respostas' onClick='verificarSeAcertou(this, this)'></li>
+                    </ol>
+                </div>
+            </article>
+  
+            <article id='aviso'>Questão <span id='numero'></span> de <span id='total'></span></article>
+            
+        </section>
+
+        <footer class='centro'><a>Home</a></footer>
+    </main>
+
+<!-- JS externo -->
+<script src="./jsquiz.js"></script>
+
+</body>
 </html>
+
+
